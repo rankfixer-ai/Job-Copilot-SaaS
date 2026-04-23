@@ -1,0 +1,122 @@
+/* frontend/styles/custom.css */
+
+/* Main container */
+.stApp {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Main title styling */
+.main-title {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Card styling */
+.job-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.metric-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    border-left: 4px solid #667eea;
+}
+
+/* Button styling */
+.stButton > button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Message boxes */
+.success-box {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #28a745;
+    margin: 1rem 0;
+}
+
+.warning-box {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #ffc107;
+    margin: 1rem 0;
+}
+
+.error-box {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #dc3545;
+    margin: 1rem 0;
+}
+
+/* Sidebar styling */
+.css-1d391kg {
+    background-color: #f8f9fa;
+}
+
+/* Expander styling */
+.streamlit-expanderHeader {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+}
+
+/* Tab styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    border-radius: 4px;
+    padding: 8px 16px;
+}
+
+/* Progress bar */
+.stProgress > div > div {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+/* Metrics */
+[data-testid="stMetricValue"] {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Animation for loading */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
