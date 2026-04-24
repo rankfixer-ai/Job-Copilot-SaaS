@@ -11,18 +11,18 @@ def init_database():
     conn = sqlite3.connect('jobcopilot.db', check_same_thread=False)
     cursor = conn.cursor()
     
+    # Users table (without last_login to avoid errors)
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             email TEXT UNIQUE NOT NULL,
             name TEXT,
             password_hash TEXT NOT NULL,
-            created_at TIMESTAMP,
-            last_login TIMESTAMP,
-            subscription_plan TEXT DEFAULT 'free'
+            created_at TIMESTAMP
         )
     ''')
     
+    # User profiles table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS user_profiles (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,6 +35,7 @@ def init_database():
         )
     ''')
     
+    # Saved jobs table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS saved_jobs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -48,6 +49,7 @@ def init_database():
         )
     ''')
     
+    # Applications table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS applications (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -85,13 +87,12 @@ def register_user(conn, email, name, password):
 
 def login_user(conn, email, password):
     cursor = conn.cursor()
-    cursor.execute('SELECT id, email, name, password_hash, subscription_plan FROM users WHERE email = ?', (email,))
+    cursor.execute('SELECT id, email, name, password_hash FROM users WHERE email = ?', (email,))
     user = cursor.fetchone()
     
     if user and verify_password(password, user[3]):
-        cursor.execute('UPDATE users SET last_login = ? WHERE id = ?', (datetime.now(), user[0]))
-        conn.commit()
-        return {'id': user[0], 'email': user[1], 'name': user[2], 'plan': user[4]}
+        # No last_login update to avoid errors
+        return {'id': user[0], 'email': user[1], 'name': user[2]}
     return None
 
 def save_profile(conn, user_id, location, years_exp, current_role, skills):
